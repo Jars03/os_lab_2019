@@ -1,0 +1,60 @@
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/swap$ cc -c swap.c
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/swap$ cc -c main.c
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/swap$ cc  main.c swap.c -o main1
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/swap$ ./main1
+b a
+
+
+
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc -c revert_string.c
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc -c main.c
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc main.o revert_string.o -o revert_string
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ ./revert_string hdfghedr
+Reverted: rdehgfdh
+
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ mkdir libstatic
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc -c main.c -o libstatic/main.o
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc -c revert_string.c -o libstatic/revert_string.o
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ ar rcs libstatic/libstaticrev.a libctatic/revert_string.o
+ar: libctatic/revert_string.o: No such file or directory
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ ar rcs libstatic/libstaticrev.a libctatic/revert_string.o
+ar: libctatic/revert_string.o: No such file or directory
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ dos2unix libstatic/revert_string.o
+dos2unix: Binary symbol 0x02 found at line 1
+dos2unix: Skipping binary file libstatic/revert_string.o
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ ar rcs libstatic/libstaticrev.a libctatic/revert_string.o
+ar: libctatic/revert_string.o: No such file or directory
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ ar rcs libstatic/libstaticrev.a revert_string.o
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc libstatic/main.o -L libstatic -libstaticrev -o libstatic/statiklink
+/usr/bin/ld: cannot find -libstaticrev
+collect2: error: ld returned 1 exit status
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc libstatic/main.o -Llibstatic -lstaticrev -o libstatic/statiklink
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ libstatic
+bash: libstatic: command not found
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ cd libstatic
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string/libstatic$ ./staticlink
+bash: ./staticlink: No such file or directory
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string/libstatic$
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string/libstatic$
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string/libstatic$ ./statiklink jdfhjsdg
+Reverted: gdsjhfd
+
+
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ mkdir libdinamic
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc -c -fPIC revert_string.c -o libdinamic/revert_string.o
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc -shared libdinamic/revert_string.o -o libdinamic/libdinamicrev.so
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ gcc libstatic/main.o -Llibdinamic -ldinamicrev -o libdinamic/dinamlink
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ cd libdinamic
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string/libdinamic$ ./dinamlink dhferhg
+./dinamlink: error while loading shared libraries: libdinamicrev.so: cannot open shared object file: No such file or directory
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string/libdinamic$ cd ..
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ echo $LD_LIBRARY_PATH
+
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src/revert_string$ export LD_LIBRARY_PATH=libdinamic; ./libdinamic/dinamlink djhhjrfg
+Reverted: gfrjhhjd
+
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src$ ln revert_string/revert_string.h tests/revert_string.h
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src$ sudo apt -y install libunit1 libunit1-doc libunit1-dev
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src$ gcc -c -fPIC tests/tests.c -o tests/tests.o
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src$ gcc tests/tests.o -Ltests -ldinamicrev -o tests/tests1 -lcunit
+user@39c1315dd68f:/projects/os_lab_2019/lab2/src$ export LD_LIBRARY_PATH=revert_string/libdinamic; tests/tests1

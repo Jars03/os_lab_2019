@@ -1,0 +1,27 @@
+gcc -o minmax find_min_max.c utils.c sequential_min_max.c
+./minmax 80 9
+user@c107af60419c:/projects/os_lab_2019/lab3/src$ gcc -c parallel_min_max.c
+user@c107af60419c:/projects/os_lab_2019/lab3/src$ gcc parallel_min_max.o find_min_max.o utils.o -o minmax3
+
+2-3
+user@c107af60419c:/projects/os_lab_2019/lab3/src$ ./minmax3 --seed 50 --array_size 9 --pnum 3 -f
+Min: 33591551
+Max: 2095625645
+Elapsed time: 4.450000ms
+user@c107af60419c:/projects/os_lab_2019/lab3/src$ ./minmax3 --seed 50 --array_size 9 --pnum 3
+Min: 33591551
+Max: 2095625645
+Elapsed time: 0.436000ms
+user@c107af60419c:/projects/os_lab_2019/lab3/src$
+
+user@8ac6decebc20:/projects/os_lab_2019/lab3/src$ make
+gcc -I.   -c -o find_min_max.o find_min_max.c
+gcc -o prog find_min_max.o utils.o prog.c -I.
+prog.c: In function ‘main’:
+prog.c:10:22: warning: implicit declaration of function ‘fork’ [-Wimplicit-function-declaration]
+    pid_t child_pid = fork();
+                      ^
+prog.c:13:8: warning: implicit declaration of function ‘execl’ [-Wimplicit-function-declaration]
+        execl("sequential_min_max" , "sequential_min_max" , "5","4", NULL );
+        user@8ac6decebc20:/projects/os_lab_2019/lab3/src$ make clean
+rm utils.o find_min_max.o sequential_min_max parallel_min_max
