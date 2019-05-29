@@ -1,4 +1,4 @@
-#include <stdio.h>
+make#include <stdio.h>
 #include "summ.h"
 int Sum(const struct SumArgs *args) {
   int sum = 0;
